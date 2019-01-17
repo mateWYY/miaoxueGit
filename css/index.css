@@ -1,0 +1,25 @@
+.boxs{
+    width: 500px;
+    height: 500px;
+    border: 2px solid #555;
+    position: relative;
+}
+span{
+    user-select: none;
+}
+.anims{
+    font-size: 30px;
+    position: absolute;
+    animation: ans 1s ease 0s forwards;
+}
+@keyframes ans {
+    0% {
+        opacity: 1;
+        padding-top: 0;
+    }
+    100% {
+        opacity: 0;
+        padding-top: 50px;
+        display: none;
+    }
+}
