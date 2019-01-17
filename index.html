@@ -3,8 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
+    <style>
+        .boxs{
+            width: 500px;
+            height: 500px;
+            border: 2px solid #555;
+            position: relative;
+        }
+        span{
+            user-select: none;
+        }
+        .anims{
+            font-size: 30px;
+            position: absolute;
+            animation: ans 1s ease 0s forwards;
+        }
+        @keyframes ans {
+            0% {
+                opacity: 1;
+                padding-top: 0;
+            }
+            100% {
+                opacity: 0;
+                padding-top: 50px;
+                display: none;
+            }
+        }
+    </style>
 </head>
 <body>
-    123
+    <div class="boxs"></div>
 </body>
+<script>
+    let boxs = document.getElementsByClassName('boxs')[0];
+    let bodys = document.getElementsByTagName('body')[0];
+    let colors = ['red','orange','#000','green','blue']
+    let worlds = ['吃鸡','吃鸭','开汽车','学开车','抢红包']
+    boxs.addEventListener('click',function (e) {
+        if(e.target.className){
+            details(e)
+        }
+    },false)
+    function details(val) {
+        let span = document.createElement('span');
+        let randomWorld = Math.floor(Math.random()*10/2)
+        let randomColor = Math.floor(Math.random()*10/2)
+        span.style.left = val.offsetX + 'px'
+        span.style.top =  val.offsetY + 'px'
+        span.style.color = colors[randomColor]
+        span.innerHTML = worlds[randomWorld]
+        span.className = 'anims'
+        bodys.appendChild(span)
+        setTimeout(disappear, 500, span)
+    }
+    function disappear(val) {
+        bodys.removeChild(val)
+    }
+</script>
 </html>
